@@ -4,8 +4,13 @@ import scipy
 import numpy as np
 import matplotlib.pylab as pl
 
-from shap.plots import labels, colors
-from shap.plots.monitoring import truncate_text
+from shap.plots import colors
+
+def truncate_text(text, max_len):
+    if len(text) > max_len:
+        return text[:int(max_len/2)-2] + "..." + text[-int(max_len/2)+1:]
+    else:
+        return text
 
 
 def subsample_data(X, y, n_sample=100, seed_temp=1234):
